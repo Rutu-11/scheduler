@@ -7,3 +7,39 @@
 .addmodal{
     border:1px solid red
 }
+
+
+.no-data {
+    background-color: pink;
+}
+
+
+
+.addmodal{
+    border:1px solid red
+}
+
+.modalinputs{
+   
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+.modalinputs input{
+    border: 1px solid gray;
+    width: 70%;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.buttondiv{
+    /* border: 1px solid red; */
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+    width: 80%;
+    margin: auto;
+}

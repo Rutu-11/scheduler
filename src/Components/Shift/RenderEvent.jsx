@@ -6,7 +6,7 @@ const renderEvent = (event, isPast) => {
         borderRadius: '4px',
         marginBottom: '4px',
     };
-
+    
     return (
         <div key={event.title} style={eventStyle}>
             <div>{event.title}</div>
