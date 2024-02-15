@@ -34,5 +34,4 @@ The application is built using modern technologies, including:
 
 This comprehensive tech stack ensures a smooth and efficient development process, resulting in a feature-rich and visually appealing Event Scheduler application.
 
-![Event Scheduler App](https://imgur.com/a/38Cu3Xx)
 
