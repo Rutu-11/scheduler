@@ -34,13 +34,24 @@ const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [eventValue, setEventValue] = useState({});
 
-  const DATA = JSON.parse(localStorage.getItem("events")) || eventData;
+  const storedData = localStorage.getItem("events");
+const DATA = storedData ? JSON.parse(storedData) : eventData || [];
+
   console.log("DATA", DATA);
   const currentDateEvents = DATA.filter((day) => {
     return (
       day.name === selectedDate.toLocaleDateString("en-US", { weekday: "long" })
     );
   });
+
+//   console.log('selectedDate?.toLocaleDateString("en-US", { weekday: "long" })',selectedDate?.toLocaleDateString("en-US", { weekday: "long" }))
+//  const d=  DATA?.filter((e)=>{console.log('e.name', e.name)})
+//   const currentDateEvents = DATA?.filter(day => day?.name === selectedDate?.toLocaleDateString("en-US", { weekday: "long" }))?.flatMap(day => day?.events?.map(event => ({
+//     ...event,
+//     title: event?.type === 'private' ? 'BUSY' : event?.title
+//   })) || []);
+
+
   console.log("currentDateEvents();", currentDateEvents);
 
   useEffect(() => {
@@ -152,7 +163,7 @@ const Events = () => {
                   customDayHeader={CustomDayHeader}
                   handleEventClick={handleEventClick}
                   eventRenderer={renderEvent}
-                  theme="google"
+                  theme="apple"
                 ></ScheduleView>
               </div>
             </div>

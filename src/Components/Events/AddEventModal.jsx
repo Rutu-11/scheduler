@@ -10,6 +10,21 @@ import {
 import "react-time-picker/dist/TimePicker.css";
 import "./Event.css";
 
+
+function generateRandomColor() {
+  // Generate random values for red, green, and blue components
+  const red = Math.floor(Math.random() * 256); // Random value between 0 and 255
+  const green = Math.floor(Math.random() * 256); // Random value between 0 and 255
+  const blue = Math.floor(Math.random() * 256); // Random value between 0 and 255
+
+  // Construct a CSS color string using the RGB values
+  const color = `rgb(${red}, ${green}, ${blue})`;
+
+  return color;
+}
+
+
+
 const AddEventModal = ({ isOpen, onSave, onCancel }) => {
   const [isOpenState, setIsOpenState] = useState(isOpen);
 
@@ -22,6 +37,7 @@ const AddEventModal = ({ isOpen, onSave, onCancel }) => {
     endTime: 0,
     title: "",
     description: "",
+    color:""
   });
 
   function timeStringToDecimal(timeString) {
@@ -56,6 +72,7 @@ const AddEventModal = ({ isOpen, onSave, onCancel }) => {
       startTime: decimalStartTime,
       endTime: decimalEndTime,
       id: Math.floor(Math.random() * 1000000), // Generate a random ID
+      color:generateRandomColor()// Assign a random color to the event
     };
 
     onSave(updatedFormData);
