@@ -16,7 +16,7 @@ const data = [
         date: "2023-09-06",
         startTime: 2,
         endTime: 5.5,
-        title: "Check-in",
+        title: "Check-out",
         description:
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
@@ -26,7 +26,7 @@ const data = [
         date: "2023-09-5",
         startTime: 16,
         endTime: 18,
-        title: "Check-out",
+        title: "Check-progress",
         description:
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
@@ -42,14 +42,18 @@ const data = [
         startTime: 25,
         endTime: 30,
         title: "Next Day's Event",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 201,
       },
       {
         date: "2023-09-8",
-        startTime: 4,
+        startTime: 6,
         endTime: 8,
-        title: "Next Day's Event",
+        title: "Current Day Event",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 202,
       },
@@ -61,9 +65,11 @@ const data = [
     events: [
       {
         date: "2023-09-7",
-        startTime: 4,
-        endTime: 8,
+        startTime: 7,
+        endTime: 9,
         title: "Next Day's Event",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 301,
       },
@@ -74,9 +80,11 @@ const data = [
     events: [
       {
         date: "2023-09-11",
-        startTime: 4,
-        endTime: 8,
-        title: "Next Day's Event",
+        startTime: 8,
+        endTime: 15,
+        title: "Annual Day Event",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 401,
       },
@@ -88,9 +96,31 @@ const data = [
     events: [
       {
         date: "2024-15-02",
-        startTime: 5,
+        startTime: 6.30,
         endTime: 8,
-        title: "Next Day's Event",
+        title: "Morning Yoga",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
+        type: "public",
+        id: 501,
+      },
+      {
+        date: "2024-15-02",
+        startTime: 9,
+        endTime: 12,
+        title: "Assignments Testing in progress",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
+        type: "private",
+        id: 501,
+      },
+      {
+        date: "2024-15-02",
+        startTime: 10,
+        endTime: 14,
+        title: "Thursday Event",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 501,
       },
@@ -102,9 +132,22 @@ const data = [
     events: [
       {
         date: "2023-09-11",
-        startTime: 4,
+        startTime: 6.30,
+        endTime: 8,
+        title: "Birthday  Event",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
+        type: "public",
+        id: 601,
+      },
+
+      {
+        date: "2023-16-02",
+        startTime: 6.30,
         endTime: 8,
         title: "Next Day's Event",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 601,
       },
@@ -115,9 +158,11 @@ const data = [
     events: [
       {
         date: "2023-09-11",
-        startTime: 4,
-        endTime: 8,
+        startTime: 7.4,
+        endTime: 9,
         title: "Next Day's Event",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 702,
       },
