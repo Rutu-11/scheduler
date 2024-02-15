@@ -1,9 +1,8 @@
  
  import { useEffect } from 'react';
 import './App.css'
-import Shift from './Components/Shift/Shift'
-import { DataContextProvider } from './Context/ContextProvider';
-import data from './Components/Shift/data'
+import Events from './Components/Events/Events'
+import data from './Components/DataBase/data'
 function App() {
  
   useEffect(()=>{
@@ -14,9 +13,9 @@ function App() {
     
   },[])
   return (
-    <DataContextProvider>
-     <Shift/>
-    </DataContextProvider>
+    <>
+     <Events/>
+    </>
   )
 }
 

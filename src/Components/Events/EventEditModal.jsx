@@ -7,23 +7,59 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
-import "react-time-picker/dist/TimePicker.css";
-import "./Shift.css";
-import { DataContext } from "../../Context/ContextProvider";
+import "./Event.css";
 
-const AddShiftModal = ({ isOpen, onSave, onCancel }) => {
+const initialdata1 = {
+  date: " ",
+  startTime: 12,
+  endTime: 12,
+  title: "",
+  description: "",
+};
+
+const formatTime = (time) => {
+  const hours = Math.floor(time);
+  const minutes = Math.round((time - hours) * 60);
+  const formattedHours = hours < 10 ? `0${hours}` : `${hours}`;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+  return `${formattedHours}:${formattedMinutes}`;
+};
+
+const EventEditModal = ({ isOpen, onSave, onCancel, initialdata }) => {
   const [isOpenState, setIsOpenState] = useState(isOpen);
-  const { data, updateEventData } = useContext(DataContext);
-
-  const DATA = JSON.parse(localStorage.getItem("events"));
-
   const [formData, setFormData] = useState({
     date: "",
-    startTime: 0,
-    endTime: 0,
+    startTime: "",
+    endTime: "",
     title: "",
     description: "",
   });
+  console.log("initialdata", initialdata);
+  useEffect(() => {
+    setIsOpenState(isOpen);
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen) {
+      if (initialdata) {
+        const formattedStartTime = formatTime(initialdata.startTime);
+        const formattedEndTime = formatTime(initialdata.endTime);
+
+        setFormData({
+          date: initialdata?.date,
+          startTime: formattedStartTime,
+          endTime: formattedEndTime,
+          title: initialdata.title,
+          description: initialdata.description,
+          id: initialdata.id,
+        });
+      }
+    }
+  }, [isOpen, initialdata]);
+
+  if (!isOpenState) {
+    return null;
+  }
 
   function timeStringToDecimal(timeString) {
     if (!timeString) return 0; // Return 0 if timeString is undefined, null, or empty string
@@ -32,96 +68,61 @@ const AddShiftModal = ({ isOpen, onSave, onCancel }) => {
     return parseFloat(decimalTime.toFixed(2)); // Convert to number with two decimal places
   }
 
-  function getDayFromDate(dateStr) {
-    const dateObj = new Date(dateStr);
-    const daysOfWeek = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    const dayOfWeek = dateObj.getDay();
-    return daysOfWeek[dayOfWeek];
-  }
+  const handleInputChange = (field, value) => {
+    // Update the formData state when input changes
+    setFormData({ ...formData, [field]: value });
+  };
+
+  const DATA = JSON.parse(localStorage.getItem("events"));
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const decimalStartTime = timeStringToDecimal(formData.startTime);
     const decimalEndTime = timeStringToDecimal(formData.endTime);
 
-    const updatedFormData = {
-      ...formData,
+    const updatedEvent = {
+      date: formData.date,
       startTime: decimalStartTime,
       endTime: decimalEndTime,
-      id: Math.floor(Math.random() * 1000000), // Generate a random ID
+      title: formData.title,
+      description: formData.description,
+      id: formData.id,
     };
 
-    onSave(updatedFormData);
-
-    const dayName = getDayFromDate(updatedFormData.date);
-    let DATA = JSON.parse(localStorage.getItem("events")) || [];
-
-    DATA = DATA.map((day) => {
-      if (day.name === dayName) {
-        return {
-          ...day,
-          events: [...day.events, updatedFormData],
-        };
-      }
-      return day;
+    const updatedData = DATA.map((day) => {
+      const updatedEvents = day.events.map((event) => {
+        if (event.id === formData.id) {
+          return updatedEvent;
+        }
+        return event;
+      });
+      return { ...day, events: updatedEvents };
     });
 
-    localStorage.setItem("events", JSON.stringify(DATA));
+    localStorage.setItem("events", JSON.stringify(updatedData));
+    onSave(updatedData);
     setIsOpenState(false);
-
-    // Clear form inputs
-    setFormData({
-      date: "",
-      startTime: 0,
-      endTime: 0,
-      title: "",
-      description: "",
-    });
   };
-
-  const handleChange = (name, value) => {
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  useEffect(() => {
-    setIsOpenState(isOpen);
-  }, [isOpen]);
-
-  if (!isOpenState) {
-    return null;
-  }
 
   return (
     <Dialog open={isOpenState} onClose={onCancel}>
       <DialogHeader>
         <div className="flex w-full items-center justify-center mb-3 h-[40px]">
-          <h2 className="text-xl  font-bold">ADD EVENT</h2>
+          <h2 className="text-xl  font-bold">EDIT EVENT</h2>
           {/* <button className="px-4 py-2 rounded" onClick={onCancel}>
-            <ImCross />
-          </button> */}
+        <ImCross />
+      </button> */}
         </div>
       </DialogHeader>
       <DialogBody style={{ maxHeight: "60vh", overflowY: "auto" }}>
         <div>
           <form onSubmit={handleSubmit}>
-            <div className="modalinputs mb-4 flex ">
+            <div className="modalinputs mb-4">
               <label className="block mb-1">Date:</label>
               <input
                 type="date"
-                name="date"
                 value={formData.date}
-                onChange={(e) => handleChange(e.target.name, e.target.value)}
+                onChange={(e) => handleInputChange("date", e.target.value)}
               />
             </div>
             <div className="modalinputs mb-4">
@@ -129,7 +130,7 @@ const AddShiftModal = ({ isOpen, onSave, onCancel }) => {
               <input
                 type="time"
                 value={formData.startTime}
-                onChange={(e) => handleChange("startTime", e.target.value)}
+                onChange={(e) => handleInputChange("startTime", e.target.value)}
               />
             </div>
             <div className="modalinputs mb-4">
@@ -137,25 +138,25 @@ const AddShiftModal = ({ isOpen, onSave, onCancel }) => {
               <input
                 type="time"
                 value={formData.endTime}
-                onChange={(e) => handleChange("endTime", e.target.value)}
+                onChange={(e) => handleInputChange("endTime", e.target.value)}
               />
             </div>
             <div className="modalinputs mb-4">
               <label className="block mb-1">Title:</label>
               <input
                 type="text"
-                name="title"
                 value={formData.title}
-                onChange={(e) => handleChange(e.target.name, e.target.value)}
+                onChange={(e) => handleInputChange("title", e.target.value)}
               />
             </div>
             <div className="modalinputs mb-4">
               <label className="block mb-1">Description:</label>
               <input
-                name="description"
                 type="text"
                 value={formData.description}
-                onChange={(e) => handleChange(e.target.name, e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("description", e.target.value)
+                }
               />
             </div>
             <div className="buttondiv ">
@@ -181,4 +182,4 @@ const AddShiftModal = ({ isOpen, onSave, onCancel }) => {
   );
 };
 
-export default AddShiftModal;
+export default EventEditModal;

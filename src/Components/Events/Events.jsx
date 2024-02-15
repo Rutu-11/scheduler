@@ -2,27 +2,25 @@ import React, { useContext, useEffect, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ScheduleView } from "react-schedule-view";
-import "./Shift.css";
+import "./Event.css";
 import vector1 from "../../assets/vector1.svg";
-import ShiftEditModal from "./ShiftEditModal";
+import EventEditModal from "./EventEditModal";
 import { AiOutlineEdit } from "react-icons/ai";
-import AddShiftModal from "./AddShiftModal";
+import AddEventModal from "./AddEventModal";
 import CustomDayHeader from "./CustomDayHeader";
 
 import { FcNext, FcPrevious } from "react-icons/fc";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import { DataContext } from "../../Context/ContextProvider";
 import renderEvent from "./RenderEvent";
-import eventData from './data'
+import eventData from '../DataBase/data'
  
 
-const Shift = () => {
+const Events = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [editableRow, setEditableRow] = useState(null);
-  const [addShift, setAddShift] = useState(false);
+  const [addEvent, setaddEvent] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [eventValue, setEventValue] = useState({});
-  const { data, updateEventData } = useContext(DataContext);
 
   const DATA = JSON.parse(localStorage.getItem('events')) || eventData;
   console.log('DATA',DATA)
@@ -32,13 +30,13 @@ const Shift = () => {
     );
   });
   console.log("currentDateEvents();",currentDateEvents)
-  console.log("data", data);
+
 
   useEffect(() => {
     // This effect will run whenever 'data' changes
     // You can add any additional logic here
     
-  }, [data]); // Run this effect whenever 'data' changes
+  }, [DATA]); // Run this effect whenever 'data' changes
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);
@@ -67,7 +65,7 @@ const Shift = () => {
   };
 
   const handleSaveShiftClick = () => {
-    setAddShift(!addShift);
+    setaddEvent(!addEvent);
   };
 
   const handleEditClick = () => {
@@ -83,7 +81,7 @@ const Shift = () => {
   };
 
   const handleCancelShift = () => {
-    setAddShift(false);
+    setaddEvent(false);
   };
 
   return (
@@ -146,14 +144,14 @@ const Shift = () => {
                   theme="google"
                 ></ScheduleView>
               </div>
-              <ShiftEditModal
+              <EventEditModal
                 isOpen={editableRow}
                 onSave={handleSaveClick}
                 onCancel={handleCancelEdit}
                 initialdata={eventValue}
               />
-              <AddShiftModal
-                isOpen={addShift}
+              <AddEventModal
+                isOpen={addEvent}
                 onSave={handleSaveShiftClick}
                 onCancel={handleCancelShift}
               />
@@ -165,4 +163,4 @@ const Shift = () => {
   );
 };
 
-export default Shift;
+export default Events;
