@@ -43,3 +43,106 @@
     width: 80%;
     margin: auto;
 }
+
+/* Event.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add additional styles for light mode */
+.dark-mode .heading_grey {
+  background-color: #1f2937; /* Change background color for dark mode */
+  color: #f3f4f6; /* Change text color for dark mode */
+}
+
+.dark-mode .bg-white {
+  background-color: #1f2937; /* Change background color for dark mode */
+}
+
+.dark-mode .text-blue-500 {
+  color: #60a5fa; /* Change text color for dark mode */
+}
+
+/* Add additional styles for light mode */
+.light-mode .heading_grey {
+  background-color: #f3f4f6; /* Change background color for light mode */
+  color: #111827; /* Change text color for light mode */
+}
+
+.light-mode .bg-white {
+  background-color: #ffffff; /* Change background color for light mode */
+}
+
+.light-mode .text-blue-500 {
+  color: #3b82f6; /* Change text color for light mode */
+}
+
+
+
+
+
+/* Event.css */
+
+
+.modalinputs {
+    color: #889dca; /* Text color for light mode */
+  }
+  
+  .buttondiv button {
+    background-color: #3b82f6; /* Background color for buttons in light mode */
+  }
+  
+  .buttondiv button:hover {
+    background-color: #2563eb; /* Hover background color for buttons in light mode */
+  }
+  
+  .dark-mode .modalinputs {
+    color: #f3f4f6; /* Text color for dark mode */
+  }
+  
+  .dark-mode .buttondiv button {
+    background-color: #6b7280; /* Background color for buttons in dark mode */
+  }
+  
+  .dark-mode .buttondiv button:hover {
+    background-color: #4b5563; /* Hover background color for buttons in dark mode */
+  }
+  
+
+
+
+
+
+  
+  
+  /* Override styles for radio inputs labels */
+  .modalinputs input[type="radio"] + label::before {
+    color: black; /* Change radio button icon color to black */
+  }
+  
+  /* Override styles for radio inputs labels */
+  .modalinputs input[type="radio"] + label {
+    margin-left: 0.5em; /* Add some left margin for spacing between radio buttons and labels */
+  }
+  
+  .buttondiv button {
+    margin-right: 0.5em; /* Add some right margin for spacing between buttons */
+    border-radius: 4px; /* Add some border radius for a cleaner look */
+    padding: 0.5em 1em; /* Add padding for button size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
+  /* Style Save button */
+  .buttondiv button[type="submit"] {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+  }
+  
+  /* Style Cancel button */
+  .buttondiv button[type="button"] {
+    background-color: #f44336; /* Red */
+    border: none;
+    color: white;
+  }
+  

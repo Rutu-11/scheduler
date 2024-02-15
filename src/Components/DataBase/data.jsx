@@ -11,6 +11,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 1,
+        color:'yellow'
       },
       {
         date: "2023-09-06",
@@ -21,7 +22,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 99,
-        color:'#8338ec'
+        color:'pink'
       },
       {
         date: "2023-09-06",
@@ -32,7 +33,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 1080,
-        color:"#c1121f"
+        color:"green"
       },
       {
         date: "2023-09-06",
@@ -43,7 +44,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 101,
-        color:"#ffbe0b"
+        color:"pink"
       },
       {
         date: "2023-09-5",
@@ -54,6 +55,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 102,
+        color:'yellow'
         
       },
     ],
@@ -70,6 +72,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 201,
+        color:"pink"
       },
       {
         date: "2023-09-8",
@@ -80,7 +83,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 202,
-        color:"#ffbe0b"
+        color:"green"
       },
     ],
   },
@@ -97,7 +100,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 301,
-        color: "#ffafcc",
+        color: "pink",
       },
       {
         date: "2023-09-7",
@@ -108,7 +111,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 309,
-        color: "#00bbf9",
+        color: "yellow",
       },
     ],
   },
@@ -124,7 +127,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 401,
-        color:"#b5179e"
+        color:"green"
       },
       {
         date: "2023-09-11",
@@ -135,7 +138,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 404,
-        color:"#d00000"
+        color:"green"
       },
     ],
   },
@@ -152,7 +155,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 501,
-        color: "rgb(255, 0, 255)",
+        color: "yellow",
       },
       {
         date: "2024-15-02",
@@ -163,6 +166,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 509,
+        color:'pink'
       },
       {
         date: "2024-15-02",
@@ -173,7 +177,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 506,
-        color:"#ff4d6d"
+        color:"green"
       },
     ],
   },
@@ -190,6 +194,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 601,
+        color:'yellow'
       },
 
       {
@@ -201,7 +206,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 666,
-        color:"#b56576"
+        color:"pink"
       },
     ],
   },
@@ -217,6 +222,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 702,
+        color:'yellow'
       },
       {
         date: "2023-09-11",
@@ -227,7 +233,7 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 707,
-        color:"#a7c957"
+        color:"green"
       },
     ],
   },

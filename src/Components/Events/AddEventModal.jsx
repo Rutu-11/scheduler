@@ -72,7 +72,7 @@ const AddEventModal = ({ isOpen, onSave, onCancel }) => {
       startTime: decimalStartTime,
       endTime: decimalEndTime,
       id: Math.floor(Math.random() * 1000000), // Generate a random ID
-      color:generateRandomColor()// Assign a random color to the event
+    
     };
 
     onSave(updatedFormData);
@@ -100,6 +100,7 @@ const AddEventModal = ({ isOpen, onSave, onCancel }) => {
       endTime: 0,
       title: "",
       description: "",
+      color:""
     });
   };
 
@@ -173,6 +174,45 @@ const AddEventModal = ({ isOpen, onSave, onCancel }) => {
                 value={formData.description}
                 onChange={(e) => handleChange(e.target.name, e.target.value)}
               />
+            </div>
+            <div className="modalinputs mb-4 dark:text-white">
+              <label className="block mb-1">Event Type:</label>
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="eventType"
+                    value="yellow"
+                    checked={formData.color === "yellow"}
+                    onChange={(e) => handleChange("color", e.target.value)}
+                  />
+                  Normal
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="eventType"
+                    value="green"
+                    checked={formData.color === "green"}
+                    onChange={(e) => handleChange("color", e.target.value)}
+                  />
+                  Stretching
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="eventType"
+                    value="pink"
+                    checked={formData.color === "pink"}
+                    onChange={(e) => handleChange("color", e.target.value)}
+                  />
+                  Whole
+                </label>
+              </div>
             </div>
             <div className="buttondiv ">
               <button

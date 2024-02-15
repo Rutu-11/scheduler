@@ -22,10 +22,9 @@ const CustomInput = ({ value, onClick }) => (
     onClick={onClick}
   >
     <span>{value}</span> &nbsp;&nbsp;&nbsp;
-    <AiFillCaretDown/>
+    <AiFillCaretDown />
   </button>
 );
-
 
 const Events = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -35,7 +34,7 @@ const Events = () => {
   const [eventValue, setEventValue] = useState({});
 
   const storedData = localStorage.getItem("events");
-const DATA = storedData ? JSON.parse(storedData) : eventData || [];
+  const DATA = storedData ? JSON.parse(storedData) : eventData || [];
 
   console.log("DATA", DATA);
   const currentDateEvents = DATA.filter((day) => {
@@ -43,16 +42,6 @@ const DATA = storedData ? JSON.parse(storedData) : eventData || [];
       day.name === selectedDate.toLocaleDateString("en-US", { weekday: "long" })
     );
   });
-
-//   console.log('selectedDate?.toLocaleDateString("en-US", { weekday: "long" })',selectedDate?.toLocaleDateString("en-US", { weekday: "long" }))
-//  const d=  DATA?.filter((e)=>{console.log('e.name', e.name)})
-//   const currentDateEvents = DATA?.filter(day => day?.name === selectedDate?.toLocaleDateString("en-US", { weekday: "long" }))?.flatMap(day => day?.events?.map(event => ({
-//     ...event,
-//     title: event?.type === 'private' ? 'BUSY' : event?.title
-//   })) || []);
-
-
-  console.log("currentDateEvents();", currentDateEvents);
 
   useEffect(() => {
     // This effect will run whenever 'data' changes
@@ -106,84 +95,69 @@ const DATA = storedData ? JSON.parse(storedData) : eventData || [];
   };
 
   return (
-    <div>
-    <div className="flex w-full sm:w-5/6 md:max-w-[50%] overflow-x-auto overflow-y-auto font-Lato">
-      <div className="w-full">
-        <div className="flex">
-          <div className="h-[110vh] overflow-y-auto">
-            <div className="flex w-full items-center justify-between border-red-300 px-2 py-2 heading_grey">
-              <div>
-                <p className="text-lg font-bold uppercase">Calender</p>
-              </div>
-              <div className="p-1">
-                <button
-                  className="p-1 font-medium text-md leading-[19.36px] px-5 min-w-[20px] min-h-[38px] rounded-md shadow-md hover:shadow-lg font-inter items-center gap-2 flex"
-                  onClick={handleSaveShiftClick}
-                >
-                  <FaRegEdit style={{ fontSize: '1.5rem' }} />
-                </button>
-              </div>
-            </div>
-            <div className="flex w-full gap-2 px-2 justify-between">
-              <div className="flex border-none bg-white rounded-lg pr-2">
-                <div>
-                  <ReactDatePicker
-                    onChange={(date) => setSelectedDate(date)}
-                    selected={selectedDate}
-                    highlightDates={[new Date()]}
-                    calendarClassName="w-full"
-                    className="w-full px-3 py-2 rounded-lg text-blue-500 font-bold appearance-none"
-                    dateFormat="E, dd MMMM"
-                    customInput={<CustomInput />}
-                  />
-                </div>
-                {/* <img src={vector1} alt="" /> */}
-              </div>
-              <div className="gap-2 flex">
-                <button
-                  className="bg-gradient-to-r from-purple-600 to-indigo-700 file: font-medium text-md leading-[19.36px] px-5 min-w-[15px] min-h-[38px] rounded-md shadow-md hover:shadow-lg font-inter"
-                  onClick={handlePreviousDay}
-                >
-                  <FcPrevious />
-                </button>
-                <button
-                  className="bg-gradient-to-r from-purple-600 to-indigo-700 font-medium text-md leading-[19.36px] px-5 min-w-[15px] min-h-[38px] rounded-md shadow-md hover:shadow-lg font-inter"
-                  onClick={handleNextDay}
-                >
-                  <FcNext />
-                </button>
-              </div>
-            </div>
-            <div>
-              <div style={{ width: '800px' }}>
-                <ScheduleView
-                  daySchedules={currentDateEvents}
-                  viewStartTime={6}
-                  viewEndTime={30}
-                  customDayHeader={CustomDayHeader}
-                  handleEventClick={handleEventClick}
-                  eventRenderer={renderEvent}
-                  theme="apple"
-                ></ScheduleView>
-              </div>
-            </div>
-            <EventEditModal
-              isOpen={editableRow}
-              onSave={handleSaveClick}
-              onCancel={handleCancelEdit}
-              initialdata={eventValue}
-            />
-            <AddEventModal
-              isOpen={addEvent}
-              onSave={handleSaveShiftClick}
-              onCancel={handleCancelShift}
-            />
-          </div>
+    <div className="flex flex-col h-screen dark-mode:bg-gray-800 dark-mode:text-white light-mode:bg-gray-100 light-mode:text-black">
+      <div className="flex items-center justify-between border-red-300 px-2 py-2 heading_grey">
+        <p className="text-lg font-bold uppercase">Calendar</p>
+        <button
+          className="p-1 font-medium text-md leading-[19.36px] px-5 min-w-[20px] min-h-[38px] rounded-md shadow-md hover:shadow-lg font-inter items-center gap-2 flex"
+          onClick={handleSaveShiftClick}
+        >
+          <FaRegEdit style={{ fontSize: "1.5rem" }} />
+        </button>
+      </div>
+      <div className="flex justify-between sm:flex-row gap-2 px-2 items-center">
+        <div className="flex-grow border-none bg-white rounded-lg pr-2">
+          <ReactDatePicker
+            onChange={(date) => setSelectedDate(date)}
+            selected={selectedDate}
+            highlightDates={[new Date()]}
+            calendarClassName="w-full"
+            className="w-full px-3 py-2 rounded-lg text-blue-500 font-bold appearance-none"
+            dateFormat="E, dd MMMM"
+            customInput={<CustomInput />}
+          />
+        </div>
+        <div className="flex items-center space-x-2">
+          <button
+            className="bg-gradient-to-r from-purple-600 to-indigo-700 font-medium text-md mr-4 leading-[19.36px] px-5 min-w-[15px] min-h-[38px] rounded-md shadow-md hover:shadow-lg font-inter"
+            onClick={handlePreviousDay}
+          >
+            <FcPrevious />
+          </button>
+          <button
+            className="bg-gradient-to-r from-purple-600 to-indigo-700 font-medium text-md leading-[19.36px] px-5 min-w-[15px] min-h-[38px] rounded-md shadow-md hover:shadow-lg font-inter"
+            onClick={handleNextDay}
+          >
+            <FcNext />
+          </button>
         </div>
       </div>
+
+      <div className="flex flex-grow overflow-y-auto">
+        <div className="w-full">
+          <ScheduleView
+            daySchedules={currentDateEvents}
+            viewStartTime={6}
+            viewEndTime={30}
+            customDayHeader={CustomDayHeader}
+            handleEventClick={handleEventClick}
+            eventRenderer={renderEvent}
+            theme="google"
+          />
+        </div>
+        <EventEditModal
+          isOpen={editableRow}
+          onSave={handleSaveClick}
+          onCancel={handleCancelEdit}
+          initialdata={eventValue}
+        />
+        <AddEventModal
+          isOpen={addEvent}
+          onSave={handleSaveShiftClick}
+          onCancel={handleCancelShift}
+        />
+      </div>
     </div>
-  </div>
-  
   );
 };
 
