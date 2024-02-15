@@ -8,12 +8,24 @@ import EventEditModal from "./EventEditModal";
 import { AiOutlineEdit } from "react-icons/ai";
 import AddEventModal from "./AddEventModal";
 import CustomDayHeader from "./CustomDayHeader";
-
+import { AiFillCaretDown } from "react-icons/ai";
 import { FcNext, FcPrevious } from "react-icons/fc";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import renderEvent from "./RenderEvent";
-import eventData from '../DataBase/data'
- 
+import eventData from "../DataBase/data";
+import { FaRegEdit } from "react-icons/fa";
+
+const CustomInput = ({ value, onClick }) => (
+  <button
+    type="button"
+    className="flex items-center justify-between w-full px-3 py-2 rounded-lg text-blue-500 font-bold bg-transparent border-none appearance-none focus:outline-none"
+    onClick={onClick}
+  >
+    <span>{value}</span> &nbsp;&nbsp;&nbsp;
+    <AiFillCaretDown/>
+  </button>
+);
+
 
 const Events = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -22,20 +34,18 @@ const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [eventValue, setEventValue] = useState({});
 
-  const DATA = JSON.parse(localStorage.getItem('events')) || eventData;
-  console.log('DATA',DATA)
+  const DATA = JSON.parse(localStorage.getItem("events")) || eventData;
+  console.log("DATA", DATA);
   const currentDateEvents = DATA.filter((day) => {
     return (
       day.name === selectedDate.toLocaleDateString("en-US", { weekday: "long" })
     );
   });
-  console.log("currentDateEvents();",currentDateEvents)
-
+  console.log("currentDateEvents();", currentDateEvents);
 
   useEffect(() => {
     // This effect will run whenever 'data' changes
     // You can add any additional logic here
-    
   }, [DATA]); // Run this effect whenever 'data' changes
 
   const handleEventClick = (event) => {
@@ -97,23 +107,24 @@ const Events = () => {
 
                 <div className="p-1">
                   <button
-                    className=" p-1 font-medium text-md leading-[19.36px] px-5   min-w-[15px]    min-h-[38px] rounded-md shadow-md hover:shadow-lg  font-inter  items-center gap-2 flex"
+                    className=" p-1 font-medium text-md leading-[19.36px] px-5   min-w-[20px]    min-h-[38px] rounded-md shadow-md hover:shadow-lg  font-inter  items-center gap-2 flex"
                     onClick={handleSaveShiftClick}
                   >
-                    <IoIosAddCircleOutline />
-                    Create
+                    <FaRegEdit style={{ fontSize: '1.5rem' }}  />
                   </button>
                 </div>
               </div>
               <div className="flex w-full gap-2 px-2 justify-between">
-                <div className="flex  border-2 border-gray bg-white rounded-lg pr-2">
+                <div className="flex  border-none bg-white rounded-lg pr-2">
                   <div>
                     <ReactDatePicker
                       onChange={(date) => setSelectedDate(date)}
                       selected={selectedDate}
                       highlightDates={[new Date()]}
                       calendarClassName="w-full"
-                      className="w-full px-3 py-2 rounded-lg"
+                      className="w-full px-3 py-2 rounded-lg text-blue-500 font-bold appearance-none"
+                      dateFormat="E, dd MMMM"
+                      customInput={<CustomInput />}
                     />
                   </div>
                   {/* <img src={vector1} alt="" /> */}
@@ -140,7 +151,7 @@ const Events = () => {
                   viewEndTime={30}
                   customDayHeader={CustomDayHeader}
                   handleEventClick={handleEventClick}
-                  eventRenderer= {renderEvent}
+                  eventRenderer={renderEvent}
                   theme="google"
                 ></ScheduleView>
               </div>
