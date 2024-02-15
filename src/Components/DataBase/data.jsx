@@ -14,6 +14,26 @@ const data = [
       },
       {
         date: "2023-09-06",
+        startTime: 13,
+        endTime: 15.5,
+        title: "Check-in",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
+        type: "public",
+        id: 99,
+      },
+      {
+        date: "2023-09-06",
+        startTime: 7,
+        endTime: 10.5,
+        title: "Check-in",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
+        type: "public",
+        id: 1080,
+      },
+      {
+        date: "2023-09-06",
         startTime: 2,
         endTime: 5.5,
         title: "Check-out",
@@ -39,8 +59,8 @@ const data = [
     events: [
       {
         date: "2023-09-11",
-        startTime: 25,
-        endTime: 30,
+        startTime: 7,
+        endTime: 10,
         title: "Next Day's Event",
         description:
           "Follow the signs to the registration desk inside the north entrance",
@@ -73,6 +93,16 @@ const data = [
         type: "public",
         id: 301,
       },
+      {
+        date: "2023-09-7",
+        startTime: 7.4,
+        endTime: 9.6,
+        title: "Graduation Event",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
+        type: "public",
+        id: 309,
+      },
     ],
   },
   {
@@ -87,6 +117,16 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
         id: 401,
+      },
+      {
+        date: "2023-09-11",
+        startTime: 9,
+        endTime: 15,
+        title: "Random Event",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
+        type: "public",
+        id: 404,
       },
     ],
   },
@@ -112,7 +152,7 @@ const data = [
         description:
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
-        id: 501,
+        id: 509,
       },
       {
         date: "2024-15-02",
@@ -122,7 +162,7 @@ const data = [
         description:
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
-        id: 501,
+        id: 506,
       },
     ],
   },
@@ -149,7 +189,7 @@ const data = [
         description:
           "Follow the signs to the registration desk inside the north entrance",
         type: "public",
-        id: 601,
+        id: 666,
       },
     ],
   },
@@ -165,6 +205,16 @@ const data = [
           "Follow the signs to the registration desk inside the north entrance",
         type: "private",
         id: 702,
+      },
+      {
+        date: "2023-09-11",
+        startTime: 8.4,
+        endTime: 10,
+        title: "Fun Activity Event",
+        description:
+          "Follow the signs to the registration desk inside the north entrance",
+        type: "private",
+        id: 707,
       },
     ],
   },

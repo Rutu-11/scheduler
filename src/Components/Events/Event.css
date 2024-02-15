@@ -39,7 +39,7 @@
     /* border: 1px solid red; */
     display: flex;
     gap: 20px;
-    justify-content: end;
+    justify-content:right;
     width: 80%;
     margin: auto;
 }
